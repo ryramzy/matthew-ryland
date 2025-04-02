@@ -1,46 +1,28 @@
+import { Header } from './components/header'
+import { Hero } from './components/hero'
+import { ServicesPreview } from './components/services-preview'
+
 export default function Page() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        Welcome to Garry Payton Law
-      </h1>
-      <div className="prose prose-neutral dark:prose-invert">
-        <p className="mb-4">
-          At Garry Payton Law, we provide exceptional legal representation with a
-          commitment to excellence and integrity. Our experienced team is dedicated
-          to serving our clients' needs with professionalism and dedication.
-        </p>
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Why Choose Us?</h2>
-          <ul className="list-disc pl-6 mb-4">
-            <li>Experienced legal professionals</li>
-            <li>Personalized attention to each case</li>
-            <li>Strong track record of success</li>
-            <li>Clear communication and transparency</li>
-            <li>Comprehensive legal solutions</li>
-          </ul>
-        </div>
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
-          <p className="mb-4">
-            Ready to discuss your legal needs? Contact us today for a consultation.
-          </p>
-          <div className="flex gap-4">
-            <a
-              href="/contact"
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
-            >
-              Contact Us
-            </a>
-            <a
-              href="tel:+13126710751"
-              className="px-4 py-2 border rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            >
-              Call: (312) 671-0751
-            </a>
+    <div className="min-h-screen bg-white dark:bg-black">
+      <Header />
+      <main className="pt-16">
+        <Hero />
+        <ServicesPreview />
+      </main>
+      <footer className="bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-base text-gray-500 dark:text-gray-400">
+              Garry Payton Law |{' '}
+              <a href="tel:+13126710751" className="text-blue-600 hover:text-blue-500">
+                (312) 671-0751
+              </a>{' '}
+              | Serving clients nationwide | Emergency? Call anytime
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </footer>
+    </div>
   )
 }
