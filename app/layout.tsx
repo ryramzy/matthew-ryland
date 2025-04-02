@@ -11,15 +11,15 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Garry Payton Law',
+    template: '%s | Garry Payton Law',
   },
-  description: 'This is my portfolio.',
+  description: 'Professional legal services by Garry Payton Law Firm.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Garry Payton Law',
+    description: 'Professional legal services by Garry Payton Law Firm.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Garry Payton Law',
     locale: 'en_US',
     type: 'website',
   },
