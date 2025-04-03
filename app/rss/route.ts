@@ -1,8 +1,8 @@
 import { baseUrl } from 'app/sitemap'
-import { getBlogPosts } from 'app/blog/utils'
+import { getBlogPosts } from '@/app/blog/utils'
 
 export async function GET() {
-  let allBlogs = await getBlogPosts()
+  let allBlogs = getBlogPosts()
 
   const itemsXml = allBlogs
     .sort((a, b) => {
@@ -27,9 +27,9 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
     <channel>
-        <title>My Portfolio</title>
-        <link>${baseUrl}</link>
-        <description>This is my portfolio RSS feed</description>
+        <title>Matthew Ryland</title>
+        <link>https://matthewryland.com</link>
+        <description>Matthew Ryland's Blog</description>
         ${itemsXml}
     </channel>
   </rss>`
