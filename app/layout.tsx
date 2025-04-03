@@ -9,19 +9,34 @@ import Footer from './components/footer'
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  title: {
-    default: 'Matthew Ryland',
-    template: '%s | Matthew Ryland',
+  title: 'Matthew Ryland Law Firm',
+  description: 'Experienced legal representation for your needs.',
+  keywords: ['lawyer', 'attorney', 'legal', 'law firm'],
+  authors: [{ name: 'Matthew Ryland' }],
+  creator: 'Matthew Ryland',
+  publisher: 'Matthew Ryland',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  description: 'Personal blog and portfolio of Matthew Ryland.',
+  metadataBase: new URL('https://matthewryland.com'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Matthew Ryland',
-    description: 'Personal blog and portfolio of Matthew Ryland.',
-    url: baseUrl,
-    siteName: 'Matthew Ryland',
+    title: 'Matthew Ryland Law Firm',
+    description: 'Experienced legal representation for your needs.',
+    url: 'https://matthewryland.com',
+    siteName: 'Matthew Ryland Law Firm',
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Matthew Ryland Law Firm',
+    description: 'Experienced legal representation for your needs.',
+    creator: '@matthewryland',
   },
   robots: {
     index: true,
@@ -34,9 +49,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'your-google-site-verification',
+  },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
+const cx = (...classes: (string | undefined)[]) => classes.filter(Boolean).join(' ')
 
 export default function RootLayout({
   children,

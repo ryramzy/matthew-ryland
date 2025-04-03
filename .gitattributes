@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+*.{ps1,[pP][sS]1} text eol=crlf
+
+*.{js,jsx,ts,tsx,css,scss,json,yml,yaml,md,markdown} text eol=lf
+*.{html,htm} text eol=lf
+
+*.{png,jpg,jpeg,gif,ico,svg,woff,woff2,ttf,eot} binary
+*.{zip,tar,gz,7z,rar} binary 
