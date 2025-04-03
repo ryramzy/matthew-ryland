@@ -1,19 +1,26 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { SocialBar } from './components/social-bar'
-import type { Metadata } from 'next'
+import { PreloadResources } from './components/preload-resources'
+import { Metadata } from 'next'
 import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'Matthew Ryland',
-  description: 'Builder, Strategist, Advocate',
-  keywords: ['lawyer', 'attorney', 'legal', 'law firm'],
+  title: {
+    default: 'Matthew Ryland - Builder, Strategist, Advocate',
+    template: '%s | Matthew Ryland'
+  },
+  description: 'Builder, Strategist, and Advocate bridging gaps between communities, information, and opportunities through storytelling, innovation, and public service.',
+  keywords: ['Matthew Ryland', 'Technology', 'Innovation', 'Public Service', 'Accessibility', 'Journalism', 'Policy'],
   authors: [{ name: 'Matthew Ryland' }],
   creator: 'Matthew Ryland',
   publisher: 'Matthew Ryland',
@@ -26,18 +33,18 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Matthew Ryland Law Firm',
-    description: 'Experienced legal representation for your needs.',
-    url: 'https://matthewryland.com',
-    siteName: 'Matthew Ryland Law Firm',
-    locale: 'en_US',
     type: 'website',
+    locale: 'en_US',
+    url: 'https://matthewryland.com',
+    siteName: 'Matthew Ryland',
+    title: 'Matthew Ryland - Builder, Strategist, Advocate',
+    description: 'Builder, Strategist, and Advocate bridging gaps between communities, information, and opportunities.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Matthew Ryland Law Firm',
-    description: 'Experienced legal representation for your needs.',
-    creator: '@matthewryland',
+    title: 'Matthew Ryland - Builder, Strategist, Advocate',
+    description: 'Builder, Strategist, and Advocate bridging gaps between communities, information, and opportunities.',
+    creator: '@rammases2',
   },
   robots: {
     index: true,
@@ -62,7 +69,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-midnight text-sandBeige`}>
+      <head>
+        <PreloadResources />
+      </head>
+      <body className={`${inter.className} bg-midnight text-sandBeige min-h-screen flex flex-col`}>
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
           {children}
