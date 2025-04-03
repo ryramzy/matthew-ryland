@@ -1,7 +1,13 @@
 import { notFound } from 'next/navigation'
-import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
-import { baseUrl } from 'app/sitemap'
+import { CustomMDX } from '@/app/components/mdx'
+import { formatDate, getBlogPosts } from '@/app/blog/utils'
+import { baseUrl } from '@/app/sitemap'
+
+interface PageParams {
+  params: {
+    slug: string
+  }
+}
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -11,7 +17,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }) {
+export function generateMetadata({ params }: PageParams) {
   let post = getBlogPosts().find((post) => post.slug === params.slug)
   if (!post) {
     return
@@ -51,7 +57,7 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
+export default function Blog({ params }: PageParams) {
   let post = getBlogPosts().find((post) => post.slug === params.slug)
 
   if (!post) {
@@ -77,12 +83,12 @@ export default function Blog({ params }) {
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               '@type': 'Person',
-              name: 'My Portfolio',
+              name: 'Matthew Ryland',
             },
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
+      <h1 className="title font-medium text-2xl tracking-tighter">
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
@@ -90,7 +96,7 @@ export default function Blog({ params }) {
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose">
+      <article className="prose prose-quoteless prose-neutral dark:prose-invert">
         <CustomMDX source={post.content} />
       </article>
     </section>
