@@ -12,6 +12,7 @@ module.exports = {
         warmGold: "#E4A502",
         softRed: "#B22222",
         sandBeige: "#F5E1C6",
+        accent: "#1B4965",
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],

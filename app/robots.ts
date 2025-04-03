@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { baseUrl } from './sitemap'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://matthewryland.com/sitemap.xml',
+    sitemap: `${baseUrl}/sitemap.xml`,
   }
 }

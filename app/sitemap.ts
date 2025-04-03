@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getBlogPosts } from '@/app/blog/utils'
 
+export const baseUrl = 'https://matthewryland.com'
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://matthewryland.com'
-  
   const routes = [
     '',
     '/bio',
