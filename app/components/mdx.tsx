@@ -1,10 +1,17 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
 import React from 'react'
 
-function Table({ data }) {
+interface TableProps {
+  data: {
+    headers: string[]
+    rows: string[][]
+  }
+}
+
+function Table({ data }: TableProps) {
   let headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
   ))
@@ -26,9 +33,11 @@ function Table({ data }) {
   )
 }
 
-function CustomLink(props) {
-  let href = props.href
+interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string
+}
 
+function CustomLink({ href, ...props }: CustomLinkProps) {
   if (href.startsWith('/')) {
     return (
       <Link href={href} {...props}>
@@ -44,28 +53,40 @@ function CustomLink(props) {
   return <a target="_blank" rel="noopener noreferrer" {...props} />
 }
 
-function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />
+interface RoundedImageProps extends Omit<ImageProps, 'alt'> {
+  alt: string
 }
 
-function Code({ children, ...props }) {
+function RoundedImage({ alt, ...props }: RoundedImageProps) {
+  return <Image alt={alt} className="rounded-lg" {...props} />
+}
+
+interface CodeProps extends React.HTMLAttributes<HTMLElement> {
+  children: string
+}
+
+function Code({ children, ...props }: CodeProps) {
   let codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
 }
 
-function slugify(str) {
+function slugify(str: string): string {
   return str
     .toString()
     .toLowerCase()
-    .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/&/g, '-and-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
 }
 
-function createHeading(level) {
-  const Heading = ({ children }) => {
+interface HeadingProps {
+  children: string
+}
+
+function createHeading(level: number) {
+  const Heading = ({ children }: HeadingProps) => {
     let slug = slugify(children)
     return React.createElement(
       `h${level}`,
@@ -86,7 +107,7 @@ function createHeading(level) {
   return Heading
 }
 
-let components = {
+const components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -99,11 +120,16 @@ let components = {
   Table,
 }
 
-export function CustomMDX(props) {
+interface CustomMDXProps {
+  source: string
+  components?: Record<string, React.ComponentType<any>>
+}
+
+export function CustomMDX({ source, components: customComponents }: CustomMDXProps) {
   return (
     <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components || {}) }}
+      source={source}
+      components={{ ...components, ...(customComponents || {}) }}
     />
   )
 }
