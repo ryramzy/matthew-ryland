@@ -1,30 +1,30 @@
 export default function ContactPage() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+    <section className="max-w-4xl mx-auto px-4 py-16">
+      <h1 className="mb-8 text-2xl font-semibold tracking-tighter text-sandBeige">
         Contact Us
       </h1>
       <div className="prose prose-neutral dark:prose-invert">
-        <p className="mb-4">
+        <p className="mb-4 text-tealBlue">
           We're here to help. Please don't hesitate to reach out to us for any
           legal assistance or questions you may have.
         </p>
         <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Contact Information</h2>
-          <p className="mb-2">
+          <h2 className="text-xl font-semibold mb-4 text-sandBeige">Contact Information</h2>
+          <p className="mb-2 text-tealBlue">
             <strong>Phone:</strong>{' '}
-            <a href="tel:+13126710751" className="text-blue-500 hover:underline">
-              (312) 671-0751
+            <a href="tel:+19164614837" className="text-warmGold hover:text-softRed">
+              (916) 461-4837
             </a>
           </p>
-          <p className="mb-2">
+          <p className="mb-2 text-tealBlue">
             <strong>Email:</strong>{' '}
-            <a href="mailto:contact@garrypaytonlaw.com" className="text-blue-500 hover:underline">
-              contact@garrypaytonlaw.com
+            <a href="mailto:contact@matthewryland.com" className="text-warmGold hover:text-softRed">
+              contact@matthewryland.com
             </a>
           </p>
-          <p className="mb-2">
-            <strong>Address:</strong> Chicago, Illinois
+          <p className="mb-2 text-tealBlue">
+            <strong>Location:</strong> Sacramento, California
           </p>
         </div>
         <div className="mt-8">
