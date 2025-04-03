@@ -1,22 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
   images: {
-    domains: ['matthewryland.com'],
+    domains: ['images.unsplash.com'],
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   experimental: {
-    optimizePackageImports: ['@vercel/analytics', '@vercel/speed-insights'],
     optimizeCss: true,
   },
+  output: 'export',
+  distDir: '.next',
+  poweredByHeader: false,
+  reactStrictMode: true,
+  swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  poweredByHeader: false,
-  headers: async () => {
+  async headers() {
     return [
       {
         source: '/:path*',
@@ -45,10 +44,10 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin'
           }
-        ],
-      },
+        ]
+      }
     ]
   }
-};
+}
 
-module.exports = nextConfig; 
+module.exports = nextConfig 
