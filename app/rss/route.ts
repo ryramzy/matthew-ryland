@@ -1,4 +1,4 @@
-import { baseUrl } from 'app/sitemap'
+import { baseUrl } from '@/app/sitemap'
 import { getBlogPosts } from '@/app/blog/utils'
 
 export async function GET() {
@@ -28,7 +28,7 @@ export async function GET() {
   <rss version="2.0">
     <channel>
         <title>Matthew Ryland</title>
-        <link>https://matthewryland.com</link>
+        <link>${baseUrl}</link>
         <description>Matthew Ryland's Blog</description>
         ${itemsXml}
     </channel>
