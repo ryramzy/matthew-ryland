@@ -47,6 +47,14 @@ const nextConfig = {
         ]
       }
     ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/og',
+        destination: '/api/og',
+      },
+    ]
   }
 }
 
