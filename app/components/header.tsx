@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+// Header component for Matthew Ryland's website
 export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-800">
@@ -7,7 +8,7 @@ export function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-xl font-bold">Garry Payton Law</span>
+            <span className="text-xl font-bold">Matthew Ryland</span>
           </Link>
 
           {/* Navigation */}
@@ -15,11 +16,11 @@ export function Header() {
             <Link href="/" className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">
               Home
             </Link>
-            <Link href="/about" className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">
-              About
+            <Link href="/bio" className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">
+              Bio
             </Link>
-            <Link href="/services" className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">
-              Services
+            <Link href="/blog" className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">
+              Blog
             </Link>
             <Link href="/contact" className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">
               Contact

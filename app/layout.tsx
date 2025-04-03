@@ -11,15 +11,15 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Garry Payton Law',
-    template: '%s | Garry Payton Law',
+    default: 'Matthew Ryland',
+    template: '%s | Matthew Ryland',
   },
-  description: 'Professional legal services by Garry Payton Law Firm.',
+  description: 'Personal blog and portfolio of Matthew Ryland.',
   openGraph: {
-    title: 'Garry Payton Law',
-    description: 'Professional legal services by Garry Payton Law Firm.',
+    title: 'Matthew Ryland',
+    description: 'Personal blog and portfolio of Matthew Ryland.',
     url: baseUrl,
-    siteName: 'Garry Payton Law',
+    siteName: 'Matthew Ryland',
     locale: 'en_US',
     type: 'website',
   },
