@@ -17,45 +17,103 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="/rss"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">rss</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/vercel/next.js"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://vercel.com/templates/next.js/portfolio-starter-kit"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">view source</p>
-          </a>
-        </li>
-      </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
-      </p>
+    <footer className="bg-midnight/80 backdrop-blur-sm border-t border-tealBlue/20">
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Contact Information */}
+          <div className="text-center md:text-left">
+            <h3 className="text-lg font-semibold text-sandBeige mb-4">Contact</h3>
+            <div className="space-y-2 text-tealBlue">
+              <p>Sacramento, California</p>
+              <a
+                href="mailto:mramsay0@gmail.com"
+                className="hover:text-warmGold transition-colors"
+              >
+                mramsay0@gmail.com
+              </a>
+              <p>
+                <a
+                  href="tel:+19164614837"
+                  className="hover:text-warmGold transition-colors"
+                >
+                  (916) 461-4837
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-sandBeige mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-tealBlue">
+              <li>
+                <a href="/" className="hover:text-warmGold transition-colors">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/bio" className="hover:text-warmGold transition-colors">
+                  Bio
+                </a>
+              </li>
+              <li>
+                <a href="/blog" className="hover:text-warmGold transition-colors">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:text-warmGold transition-colors">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social Links */}
+          <div className="text-center md:text-right">
+            <h3 className="text-lg font-semibold text-sandBeige mb-4">Connect</h3>
+            <ul className="space-y-2 text-tealBlue">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/matthew-r-72288390/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-warmGold transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://x.com/rammases2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-warmGold transition-colors"
+                >
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@ryramzy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-warmGold transition-colors"
+                >
+                  YouTube
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-8 pt-8 border-t border-tealBlue/20 text-center">
+          <p className="text-tealBlue">
+            © {new Date().getFullYear()} Matthew Ryland. All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer>
   )
 }

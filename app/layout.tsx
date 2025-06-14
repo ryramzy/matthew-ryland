@@ -8,6 +8,8 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
+import { AstrofyProvider } from 'astrofy'
+import astrofyConfig from './astrofy.config'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -73,14 +75,16 @@ export default function RootLayout({
         <PreloadResources />
       </head>
       <body className={`${inter.className} bg-midnight text-sandBeige min-h-screen flex flex-col`}>
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
-          {children}
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
-        </main>
-        <SocialBar />
+        <AstrofyProvider config={astrofyConfig}>
+          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+            <Navbar />
+            {children}
+            <Footer />
+            <Analytics />
+            <SpeedInsights />
+          </main>
+          <SocialBar />
+        </AstrofyProvider>
       </body>
     </html>
   )
