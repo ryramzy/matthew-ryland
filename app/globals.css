@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,22 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
+  
+  /* Custom CSS Variables */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Color Variables */
+  --color-midnight: #0D1B2A;
+  --color-teal-blue: #1B4965;
+  --color-warm-gold: #E4A502;
+  --color-soft-red: #B22222;
+  --color-sand-beige: #F5E1C6;
+  
+  /* Spacing */
+  --section-padding: 6rem;
+  --container-padding: 1.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +34,16 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,11 +52,78 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.7;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-padding-top: 100px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-midnight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-teal-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-gold);
 }
 
 @layer base {
   body {
     @apply antialiased;
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus {
+    outline: 2px solid var(--color-warm-gold);
+    outline-offset: 2px;
+  }
+  
+  /* Selection styles */
+  ::selection {
+    background-color: var(--color-warm-gold);
+    color: var(--color-midnight);
   }
 }
 
@@ -38,14 +133,72 @@ body {
   }
   
   .btn {
-    @apply inline-flex items-center justify-center rounded-md border border-transparent bg-accent px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-md border border-transparent bg-accent px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-warmGold text-midnight hover:bg-warmGold/90 focus:ring-warmGold shadow-glow;
+  }
+  
+  .btn-secondary {
+    @apply bg-softRed text-white hover:bg-softRed/90 focus:ring-softRed shadow-glow-red;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-warmGold text-warmGold hover:bg-warmGold hover:text-midnight transition-all duration-200;
   }
   
   .input {
-    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-sm;
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-sm transition-all duration-200;
   }
   
   .label {
     @apply block text-sm font-medium text-gray-700;
+  }
+  
+  /* Glassmorphism effects */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-glass;
+  }
+  
+  .glass-dark {
+    @apply bg-midnight/80 backdrop-blur-md border border-tealBlue/20 shadow-glass;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .card-dark {
+    @apply bg-midnight/90 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-tealBlue/20;
+  }
+  
+  /* Section spacing */
+  .section {
+    @apply py-16 lg:py-24;
+  }
+  
+  .section-sm {
+    @apply py-12 lg:py-16;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-warmGold to-softRed bg-clip-text text-transparent;
+  }
+  
+  /* Floating animation */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Fade in animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
   }
 } 

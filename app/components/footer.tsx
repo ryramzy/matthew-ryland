@@ -1,119 +1,265 @@
-function ArrowIcon() {
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { 
+  Linkedin, 
+  Twitter, 
+  Youtube, 
+  Github, 
+  Mail, 
+  Phone, 
+  MapPin,
+  ArrowUp,
+  Heart
+} from 'lucide-react'
+
+const socialLinks = [
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/matthew-r-72288390/',
+    icon: Linkedin,
+    color: 'from-blue-600 to-blue-700'
+  },
+  {
+    name: 'Twitter',
+    url: 'https://x.com/rammases2',
+    icon: Twitter,
+    color: 'from-sky-500 to-blue-600'
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@ryramzy',
+    icon: Youtube,
+    color: 'from-red-600 to-red-700'
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/ryramzy',
+    icon: Github,
+    color: 'from-gray-700 to-gray-800'
+  }
+]
+
+const quickLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Bio', href: '/bio' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' }
+]
+
+const contactInfo = [
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: 'Sacramento, California',
+    href: '#'
+  },
+  {
+    icon: Mail,
+    label: 'Email',
+    value: 'mramsay0@gmail.com',
+    href: 'mailto:mramsay0@gmail.com'
+  },
+  {
+    icon: Phone,
+    label: 'Phone',
+    value: '+12092674701',
+    href: 'tel:+12092674701'
+  }
+]
+
+function ScrollToTop() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <motion.button
+      onClick={scrollToTop}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed bottom-6 right-6 p-3 bg-gradient-to-r from-warmGold to-softRed text-midnight rounded-full shadow-lg hover:shadow-glow transition-all duration-300 z-40"
+      aria-label="Scroll to top"
     >
-      <path
-        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-        fill="currentColor"
-      />
-    </svg>
+      <ArrowUp size={20} />
+    </motion.button>
   )
 }
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="bg-midnight/80 backdrop-blur-sm border-t border-tealBlue/20">
-      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Contact Information */}
-          <div className="text-center md:text-left">
-            <h3 className="text-lg font-semibold text-sandBeige mb-4">Contact</h3>
-            <div className="space-y-2 text-tealBlue">
-              <p>Sacramento, California</p>
-              <a
-                href="mailto:mramsay0@gmail.com"
-                className="hover:text-warmGold transition-colors"
+    <>
+      <footer className="relative bg-gradient-to-b from-midnight via-midnight/95 to-tealBlue/20 border-t border-tealBlue/20 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-r from-warmGold/5 via-transparent to-softRed/5 opacity-30" />
+        
+        <div className="container relative z-10">
+          <div className="py-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+              {/* Brand Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="lg:col-span-1"
               >
-                mramsay0@gmail.com
-              </a>
-              <p>
-                <a
-                  href="tel:+12092674701"
-                  className="hover:text-warmGold transition-colors"
-                >
-                  +12092674701
-                </a>
-              </p>
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-br from-warmGold to-softRed rounded-lg flex items-center justify-center">
+                    <span className="text-midnight font-bold text-lg">MR</span>
+                  </div>
+                  <span className="text-2xl font-serif font-bold text-sandBeige">
+                    Matthew Ryland
+                  </span>
+                </div>
+                <p className="text-tealBlue/80 text-sm leading-relaxed mb-6">
+                  Building bridges between communities, information, and opportunities through 
+                  storytelling, innovation, and public service.
+                </p>
+                
+                {/* Social Links */}
+                <div className="flex space-x-3">
+                  {socialLinks.map((social, index) => (
+                    <motion.a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`p-2 rounded-lg bg-gradient-to-r ${social.color} text-white shadow-lg hover:shadow-xl transition-all duration-300`}
+                      aria-label={social.name}
+                    >
+                      <social.icon size={18} />
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Quick Links */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="lg:col-span-1"
+              >
+                <h3 className="text-lg font-semibold text-sandBeige mb-6">Quick Links</h3>
+                <ul className="space-y-3">
+                  {quickLinks.map((link, index) => (
+                    <motion.li
+                      key={link.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link
+                        href={link.href}
+                        className="text-tealBlue/80 hover:text-warmGold transition-colors duration-200 text-sm"
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              {/* Contact Information */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="lg:col-span-1"
+              >
+                <h3 className="text-lg font-semibold text-sandBeige mb-6">Contact</h3>
+                <ul className="space-y-3">
+                  {contactInfo.map((info, index) => (
+                    <motion.li
+                      key={info.label}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <a
+                        href={info.href}
+                        className="flex items-center space-x-3 text-tealBlue/80 hover:text-warmGold transition-colors duration-200 text-sm group"
+                      >
+                        <div className="p-1.5 rounded-md bg-tealBlue/20 group-hover:bg-warmGold/20 transition-colors duration-200">
+                          <info.icon size={14} className="text-tealBlue group-hover:text-warmGold" />
+                        </div>
+                        <span>{info.value}</span>
+                      </a>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              {/* Newsletter Signup */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="lg:col-span-1"
+              >
+                <h3 className="text-lg font-semibold text-sandBeige mb-6">Stay Updated</h3>
+                <p className="text-tealBlue/80 text-sm mb-4">
+                  Get insights on community building and innovation delivered to your inbox.
+                </p>
+                <div className="space-y-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-2 bg-midnight/50 border border-tealBlue/20 rounded-lg text-sandBeige placeholder-tealBlue/60 focus:border-warmGold focus:outline-none text-sm transition-colors duration-200"
+                  />
+                  <button className="w-full px-4 py-2 bg-gradient-to-r from-warmGold to-softRed text-midnight font-semibold rounded-lg hover:shadow-glow transition-all duration-300 text-sm">
+                    Subscribe
+                  </button>
+                </div>
+              </motion.div>
             </div>
-          </div>
 
-          {/* Quick Links */}
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-sandBeige mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-tealBlue">
-              <li>
-                <a href="/" className="hover:text-warmGold transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/bio" className="hover:text-warmGold transition-colors">
-                  Bio
-                </a>
-              </li>
-              <li>
-                <a href="/blog" className="hover:text-warmGold transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="hover:text-warmGold transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social Links */}
-          <div className="text-center md:text-right">
-            <h3 className="text-lg font-semibold text-sandBeige mb-4">Connect</h3>
-            <ul className="space-y-2 text-tealBlue">
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/matthew-r-72288390/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-warmGold transition-colors"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://x.com/rammases2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-warmGold transition-colors"
-                >
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.youtube.com/@ryramzy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-warmGold transition-colors"
-                >
-                  YouTube
-                </a>
-              </li>
-            </ul>
+            {/* Bottom Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="pt-8 border-t border-tealBlue/20"
+            >
+              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div className="flex items-center space-x-2 text-tealBlue/60 text-sm">
+                  <span>© {currentYear} Matthew Ryland. All rights reserved.</span>
+                  <span>•</span>
+                  <span>Made with</span>
+                  <Heart size={14} className="text-softRed" />
+                  <span>for community impact</span>
+                </div>
+                
+                <div className="flex items-center space-x-6 text-sm">
+                  <Link href="/privacy" className="text-tealBlue/60 hover:text-warmGold transition-colors duration-200">
+                    Privacy Policy
+                  </Link>
+                  <Link href="/terms" className="text-tealBlue/60 hover:text-warmGold transition-colors duration-200">
+                    Terms of Service
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
+      </footer>
 
-        {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-tealBlue/20 text-center">
-          <p className="text-tealBlue">
-            © {new Date().getFullYear()} Matthew Ryland. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
+    </>
   )
 }
