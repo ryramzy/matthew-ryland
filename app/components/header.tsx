@@ -60,7 +60,7 @@ export function Header() {
           {/* Call Button - Hidden on Mobile */}
           <div className="hidden md:flex items-center">
             <a
-              href="tel:+19164614837"
+              href="tel:+12092674701"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-sandBeige bg-softRed hover:bg-warmGold transition-colors"
             >
               Call Now
@@ -101,7 +101,7 @@ export function Header() {
                 Contact
               </Link>
               <a
-                href="tel:+19164614837"
+                href="tel:+12092674701"
                 className="block px-3 py-2 rounded-md text-base font-medium text-sandBeige bg-softRed hover:bg-warmGold transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >

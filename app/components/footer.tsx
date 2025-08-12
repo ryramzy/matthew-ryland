@@ -33,10 +33,10 @@ export default function Footer() {
               </a>
               <p>
                 <a
-                  href="tel:+19164614837"
+                  href="tel:+12092674701"
                   className="hover:text-warmGold transition-colors"
                 >
-                  (916) 461-4837
+                  +12092674701
                 </a>
               </p>
             </div>

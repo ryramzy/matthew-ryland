@@ -50,10 +50,10 @@ export function Contact() {
               <div className="space-y-4 text-tealBlue">
                 <p>
                   <a
-                    href="tel:+19164614837"
+                    href="tel:+12092674701"
                     className="hover:text-warmGold transition-colors"
                   >
-                    (916) 461-4837
+                    +12092674701
                   </a>
                 </p>
                 <p>

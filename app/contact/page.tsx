@@ -13,8 +13,8 @@ export default function ContactPage() {
           <h2 className="text-xl font-semibold mb-4 text-sandBeige">Contact Information</h2>
           <p className="mb-2 text-tealBlue">
             <strong>Phone:</strong>{' '}
-            <a href="tel:+19164614837" className="text-warmGold hover:text-softRed">
-              (916) 461-4837
+            <a href="tel:+12092674701" className="text-warmGold hover:text-softRed">
+              +12092674701
             </a>
           </p>
           <p className="mb-2 text-tealBlue">
