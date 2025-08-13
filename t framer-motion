@@ -1,0 +1,5 @@
+[33m2b199fc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Complete website redesign for 2025 standards - Enhanced components, modern UI, animations, and premium user experience
+[33m8657b8a[m Fix duplicate footer issue - remove footer from home page since it's already in layout
+[33md11131a[m Update phone number to +12092674701 across all components and pages
+[33m126a70c[m Add Projects, Approach, and Contact sections to homepage
+[33mf77c564[m fix: resolve deployment errors by adding use client directive and removing astrofy dependency

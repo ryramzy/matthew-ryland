@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+'use client'
+
 import Link from 'next/link'
 import { 
   Linkedin, 
@@ -73,15 +74,13 @@ function ScrollToTop() {
   }
 
   return (
-    <motion.button
+    <button
       onClick={scrollToTop}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-      className="fixed bottom-6 right-6 p-3 bg-gradient-to-r from-warmGold to-softRed text-midnight rounded-full shadow-lg hover:shadow-glow transition-all duration-300 z-40"
+      className="fixed bottom-6 right-6 p-3 bg-gradient-to-r from-warmGold to-softRed text-midnight rounded-full shadow-lg hover:shadow-glow transition-all duration-300 z-40 hover:scale-110 active:scale-95"
       aria-label="Scroll to top"
     >
       <ArrowUp size={20} />
-    </motion.button>
+    </button>
   )
 }
 
@@ -98,13 +97,7 @@ export default function Footer() {
           <div className="py-16">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
               {/* Brand Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="lg:col-span-1"
-              >
+              <div className="lg:col-span-1 animate-fade-in">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-10 h-10 bg-gradient-to-br from-warmGold to-softRed rounded-lg flex items-center justify-center">
                     <span className="text-midnight font-bold text-lg">MR</span>
@@ -121,73 +114,43 @@ export default function Footer() {
                 {/* Social Links */}
                 <div className="flex space-x-3">
                   {socialLinks.map((social, index) => (
-                    <motion.a
+                    <a
                       key={social.name}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`p-2 rounded-lg bg-gradient-to-r ${social.color} text-white shadow-lg hover:shadow-xl transition-all duration-300`}
+                      className={`p-2 rounded-lg bg-gradient-to-r ${social.color} text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95`}
                       aria-label={social.name}
                     >
                       <social.icon size={18} />
-                    </motion.a>
+                    </a>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               {/* Quick Links */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="lg:col-span-1"
-              >
+              <div className="lg:col-span-1 animate-fade-in" style={{ animationDelay: '0.1s' }}>
                 <h3 className="text-lg font-semibold text-sandBeige mb-6">Quick Links</h3>
                 <ul className="space-y-3">
                   {quickLinks.map((link, index) => (
-                    <motion.li
-                      key={link.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
+                    <li key={link.name} className="animate-fade-in" style={{ animationDelay: `${0.2 + index * 0.1}s` }}>
                       <Link
                         href={link.href}
                         className="text-tealBlue/80 hover:text-warmGold transition-colors duration-200 text-sm"
                       >
                         {link.name}
                       </Link>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
 
               {/* Contact Information */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="lg:col-span-1"
-              >
+              <div className="lg:col-span-1 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 <h3 className="text-lg font-semibold text-sandBeige mb-6">Contact</h3>
                 <ul className="space-y-3">
                   {contactInfo.map((info, index) => (
-                    <motion.li
-                      key={info.label}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
+                    <li key={info.label} className="animate-fade-in" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
                       <a
                         href={info.href}
                         className="flex items-center space-x-3 text-tealBlue/80 hover:text-warmGold transition-colors duration-200 text-sm group"
@@ -197,19 +160,13 @@ export default function Footer() {
                         </div>
                         <span>{info.value}</span>
                       </a>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
 
               {/* Newsletter Signup */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="lg:col-span-1"
-              >
+              <div className="lg:col-span-1 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <h3 className="text-lg font-semibold text-sandBeige mb-6">Stay Updated</h3>
                 <p className="text-tealBlue/80 text-sm mb-4">
                   Get insights on community building and innovation delivered to your inbox.
@@ -224,17 +181,11 @@ export default function Footer() {
                     Subscribe
                   </button>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Bottom Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="pt-8 border-t border-tealBlue/20"
-            >
+            <div className="pt-8 border-t border-tealBlue/20 animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 <div className="flex items-center space-x-2 text-tealBlue/60 text-sm">
                   <span>© {currentYear} Matthew Ryland. All rights reserved.</span>
@@ -253,7 +204,7 @@ export default function Footer() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </footer>

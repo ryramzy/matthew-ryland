@@ -1,79 +1,23 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react'
-import { Typewriter } from './typewriter'
+import { Typewriter } from '../components/typewriter'
 
-// Floating shapes component
+// Floating shapes component (simplified without motion)
 function FloatingShapes() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Animated circles */}
-      <motion.div
-        className="absolute top-20 left-10 w-20 h-20 bg-warmGold/20 rounded-full"
-        animate={{
-          y: [0, -20, 0],
-          x: [0, 10, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute top-40 right-20 w-16 h-16 bg-softRed/20 rounded-full"
-        animate={{
-          y: [0, 15, 0],
-          x: [0, -15, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-40 left-1/4 w-12 h-12 bg-tealBlue/20 rounded-full"
-        animate={{
-          y: [0, -25, 0],
-          x: [0, 20, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+      <div className="absolute top-20 left-10 w-20 h-20 bg-warmGold/20 rounded-full animate-pulse" />
+      <div className="absolute top-40 right-20 w-16 h-16 bg-softRed/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-40 left-1/4 w-12 h-12 bg-tealBlue/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
       
       {/* Animated squares */}
-      <motion.div
-        className="absolute top-1/3 right-1/3 w-8 h-8 bg-warmGold/15 rotate-45"
-        animate={{
-          rotate: [45, 225, 45],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+      <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-warmGold/15 rotate-45 animate-pulse" style={{ animationDelay: '3s' }} />
       
       {/* Animated triangles */}
-      <motion.div
-        className="absolute bottom-20 right-10 w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-softRed/20"
-        animate={{
-          y: [0, -15, 0],
-          rotate: [0, 180, 360],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+      <div className="absolute bottom-20 right-10 w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-softRed/20 animate-pulse" style={{ animationDelay: '4s' }} />
     </div>
   )
 }
@@ -107,14 +51,10 @@ function ContactCards() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
       {contactInfo.map((item, index) => (
-        <motion.a
+        <a
           key={item.label}
           href={item.href}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 + index * 0.1 }}
-          whileHover={{ scale: 1.05, y: -5 }}
-          className="group relative overflow-hidden rounded-xl bg-midnight/50 backdrop-blur-sm border border-tealBlue/20 p-4 hover:border-warmGold/40 transition-all duration-300"
+          className="group relative overflow-hidden rounded-xl bg-midnight/80 backdrop-blur-md border border-tealBlue/20 p-4 hover:border-warmGold/40 transition-all duration-300 shadow-xl hover:scale-105 hover:-translate-y-1"
         >
           <div className="flex items-center space-x-3">
             <div className={`p-2 rounded-lg bg-gradient-to-r ${item.color} text-white`}>
@@ -128,7 +68,7 @@ function ContactCards() {
             </div>
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-warmGold/5 to-softRed/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </motion.a>
+        </a>
       ))}
     </div>
   )
@@ -136,8 +76,19 @@ function ContactCards() {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-midnight via-tealBlue/20 to-midnight">
-      {/* Background gradient overlay */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/hero%20home.jpg)',
+        }}
+      />
+      
+      {/* Semi-transparent dark overlay with Gaussian blur */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      
+      {/* Additional gradient overlay for better text contrast */}
       <div className="absolute inset-0 bg-gradient-to-b from-midnight/80 via-midnight/60 to-midnight/80" />
       
       {/* Floating shapes */}
@@ -147,23 +98,13 @@ export function Hero() {
       <div className="container relative z-10">
         <div className="text-center max-w-5xl mx-auto">
           {/* Main headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold text-sandBeige mb-6"
-          >
+          <h1 className="text-5xl md:text-7xl font-bold text-sandBeige mb-6 drop-shadow-2xl animate-fade-in">
             Matthew Ryland
-          </motion.h1>
+          </h1>
           
           {/* Subtitle with typewriter effect */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8"
-          >
-            <h2 className="text-2xl md:text-3xl font-medium text-tealBlue mb-4">
+          <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <h2 className="text-2xl md:text-3xl font-medium text-tealBlue mb-4 drop-shadow-lg">
               I'm a{' '}
               <span className="text-warmGold font-semibold">
                 <Typewriter 
@@ -177,67 +118,45 @@ export function Hero() {
                 />
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-sandBeige/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-sandBeige/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
               Bridging gaps between communities, information, and opportunities through 
               storytelling, innovation, and public service.
             </p>
-          </motion.div>
+          </div>
 
           {/* Contact cards */}
-          <ContactCards />
+          <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <ContactCards />
+          </div>
 
           {/* CTA buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <div className="hover:scale-105 transition-transform duration-300">
               <Link
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-warmGold to-softRed text-midnight font-bold rounded-xl hover:shadow-glow transition-all duration-300 text-lg"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-warmGold to-softRed text-midnight font-bold rounded-xl hover:shadow-glow transition-all duration-300 text-lg shadow-xl"
               >
                 Let's Connect
                 <ArrowRight size={20} className="ml-2" />
               </Link>
-            </motion.div>
+            </div>
             
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <div className="hover:scale-105 transition-transform duration-300">
               <Link
                 href="/bio"
-                className="inline-flex items-center px-8 py-4 border-2 border-warmGold text-warmGold font-semibold rounded-xl hover:bg-warmGold hover:text-midnight transition-all duration-300 text-lg"
+                className="inline-flex items-center px-8 py-4 border-2 border-warmGold text-warmGold font-semibold rounded-xl hover:bg-warmGold hover:text-midnight transition-all duration-300 text-lg backdrop-blur-sm bg-midnight/20 shadow-xl"
               >
                 Learn More
               </Link>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-6 h-10 border-2 border-tealBlue/40 rounded-full flex justify-center"
-            >
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-3 bg-warmGold rounded-full mt-2"
-              />
-            </motion.div>
-          </motion.div>
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in" style={{ animationDelay: '1s' }}>
+            <div className="w-6 h-10 border-2 border-tealBlue/40 rounded-full flex justify-center animate-bounce">
+              <div className="w-1 h-3 bg-warmGold rounded-full mt-2" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
