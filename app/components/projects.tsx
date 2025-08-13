@@ -68,12 +68,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ y: -10 }}
-      className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-midnight/90 to-tealBlue/20 border border-tealBlue/20 hover:border-warmGold/40 transition-all duration-500"
+      className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-midnight/95 to-midnight/80 border border-warmGold/20 hover:border-warmGold/40 transition-all duration-500"
     >
       {/* Project Image */}
       <div className="relative h-48 overflow-hidden">
-        <div className="w-full h-full bg-gradient-to-br from-tealBlue/30 to-warmGold/20 flex items-center justify-center">
-          <span className="text-tealBlue/60 text-sm">Project Image</span>
+        <div className="w-full h-full bg-gradient-to-br from-midnight/40 to-warmGold/20 flex items-center justify-center">
+          <span className="text-white/80 text-sm font-medium">Project Image</span>
         </div>
         
         {/* Overlay on hover */}

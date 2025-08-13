@@ -85,10 +85,10 @@ function SkillBar({ skill, index }: { skill: Skill; index: number }) {
           </div>
           <span className="text-sandBeige font-medium">{skill.name}</span>
         </div>
-        <span className="text-tealBlue text-sm font-semibold">{skill.level}%</span>
+        <span className="text-warmGold text-sm font-semibold">{skill.level}%</span>
       </div>
       
-      <div className="w-full bg-midnight/50 rounded-full h-2 border border-tealBlue/20">
+      <div className="w-full bg-midnight/50 rounded-full h-2 border border-warmGold/20">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${skill.level}%` }}

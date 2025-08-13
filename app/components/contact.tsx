@@ -31,7 +31,7 @@ export function Contact() {
           <h2 className="text-3xl font-bold text-sandBeige sm:text-4xl">
             Let's Build Something Meaningful
           </h2>
-          <p className="mt-4 text-lg text-tealBlue">
+          <p className="mt-4 text-lg text-white">
             Get in touch to discuss collaboration opportunities
           </p>
         </div>
@@ -47,7 +47,7 @@ export function Contact() {
           >
             <div>
               <h3 className="text-xl font-semibold text-sandBeige mb-4">Contact Information</h3>
-              <div className="space-y-4 text-tealBlue">
+              <div className="space-y-4 text-white">
                 <p>
                   <a
                     href="tel:+12092674701"

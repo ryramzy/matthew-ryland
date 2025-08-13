@@ -89,7 +89,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="relative bg-gradient-to-b from-midnight via-midnight/95 to-tealBlue/20 border-t border-tealBlue/20 overflow-hidden">
+      <footer className="relative bg-gradient-to-b from-midnight via-midnight/95 to-midnight/80 border-t border-warmGold/20 overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 bg-gradient-to-r from-warmGold/5 via-transparent to-softRed/5 opacity-30" />
         
@@ -106,7 +106,7 @@ export default function Footer() {
                     Matthew Ryland
                   </span>
                 </div>
-                <p className="text-tealBlue/80 text-sm leading-relaxed mb-6">
+                <p className="text-white/90 text-sm leading-relaxed mb-6">
                   Building bridges between communities, information, and opportunities through 
                   storytelling, innovation, and public service.
                 </p>
@@ -136,7 +136,7 @@ export default function Footer() {
                     <li key={link.name} className="animate-fade-in" style={{ animationDelay: `${0.2 + index * 0.1}s` }}>
                       <Link
                         href={link.href}
-                        className="text-tealBlue/80 hover:text-warmGold transition-colors duration-200 text-sm"
+                        className="text-white/80 hover:text-warmGold transition-colors duration-200 text-sm"
                       >
                         {link.name}
                       </Link>
@@ -153,10 +153,10 @@ export default function Footer() {
                     <li key={info.label} className="animate-fade-in" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
                       <a
                         href={info.href}
-                        className="flex items-center space-x-3 text-tealBlue/80 hover:text-warmGold transition-colors duration-200 text-sm group"
+                        className="flex items-center space-x-3 text-white/80 hover:text-warmGold transition-colors duration-200 text-sm group"
                       >
-                        <div className="p-1.5 rounded-md bg-tealBlue/20 group-hover:bg-warmGold/20 transition-colors duration-200">
-                          <info.icon size={14} className="text-tealBlue group-hover:text-warmGold" />
+                        <div className="p-1.5 rounded-md bg-warmGold/20 group-hover:bg-warmGold/30 transition-colors duration-200">
+                          <info.icon size={14} className="text-warmGold group-hover:text-warmGold" />
                         </div>
                         <span>{info.value}</span>
                       </a>
@@ -168,14 +168,14 @@ export default function Footer() {
               {/* Newsletter Signup */}
               <div className="lg:col-span-1 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <h3 className="text-lg font-semibold text-sandBeige mb-6">Stay Updated</h3>
-                <p className="text-tealBlue/80 text-sm mb-4">
+                <p className="text-white/80 text-sm mb-4">
                   Get insights on community building and innovation delivered to your inbox.
                 </p>
                 <div className="space-y-3">
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full px-4 py-2 bg-midnight/50 border border-tealBlue/20 rounded-lg text-sandBeige placeholder-tealBlue/60 focus:border-warmGold focus:outline-none text-sm transition-colors duration-200"
+                    className="w-full px-4 py-2 bg-midnight/50 border border-warmGold/20 rounded-lg text-sandBeige placeholder-white/60 focus:border-warmGold focus:outline-none text-sm transition-colors duration-200"
                   />
                   <button className="w-full px-4 py-2 bg-gradient-to-r from-warmGold to-softRed text-midnight font-semibold rounded-lg hover:shadow-glow transition-all duration-300 text-sm">
                     Subscribe
