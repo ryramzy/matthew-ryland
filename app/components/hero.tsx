@@ -85,11 +85,11 @@ export function Hero() {
         }}
       />
       
-      {/* Semi-transparent dark overlay with Gaussian blur */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      {/* Semi-transparent dark overlay with minimal blur */}
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
       
       {/* Additional gradient overlay for better text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-midnight/80 via-midnight/60 to-midnight/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-midnight/70 via-midnight/50 to-midnight/70" />
       
       {/* Floating shapes */}
       <FloatingShapes />
@@ -104,9 +104,9 @@ export function Hero() {
           
           {/* Subtitle with typewriter effect */}
           <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <h2 className="text-2xl md:text-3xl font-medium text-tealBlue mb-4 drop-shadow-lg">
+            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4 drop-shadow-2xl">
               I'm a{' '}
-              <span className="text-warmGold font-semibold">
+              <span className="text-warmGold font-bold">
                 <Typewriter 
                   words={['Builder', 'Strategist', 'Advocate', 'Innovator']}
                   loop={true}
@@ -118,7 +118,7 @@ export function Hero() {
                 />
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-sandBeige/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+            <p className="text-lg md:text-xl text-white font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-2xl">
               Bridging gaps between communities, information, and opportunities through 
               storytelling, innovation, and public service.
             </p>
