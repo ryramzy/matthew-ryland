@@ -7,7 +7,6 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  output: 'export',
   distDir: '.next',
   poweredByHeader: false,
   reactStrictMode: true,
@@ -48,14 +47,6 @@ const nextConfig = {
       }
     ]
   },
-  async rewrites() {
-    return [
-      {
-        source: '/og',
-        destination: '/api/og',
-      },
-    ]
-  }
 }
 
 module.exports = nextConfig 
