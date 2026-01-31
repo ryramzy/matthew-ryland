@@ -36,7 +36,7 @@ const socialLinks = [
   },
   {
     name: 'Twitter',
-    url: 'https://x.com/rammases2',
+    url: 'https://x.com/ryramzyx',
     icon: Twitter,
     color: 'from-sky-500 to-blue-600'
   },

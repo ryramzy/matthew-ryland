@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Matthew Ryland - Builder, Strategist, Advocate',
     description: 'Builder, Strategist, and Advocate bridging gaps between communities, information, and opportunities.',
-    creator: '@rammases2',
+    creator: '@ryramzyx',
   },
   robots: {
     index: true,
