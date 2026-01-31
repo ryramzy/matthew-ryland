@@ -3,11 +3,10 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sun, Moon, Phone } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -17,11 +16,6 @@ export function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-    // Add dark mode logic here
-  }
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -79,17 +73,6 @@ export function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Dark Mode Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full bg-midnight/50 border border-tealBlue/20 text-sandBeige hover:text-warmGold hover:bg-midnight/70 transition-all duration-200"
-              aria-label="Toggle dark mode"
-            >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </motion.button>
-
             {/* Call Button */}
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -145,24 +128,6 @@ export function Header() {
                 
                 {/* Mobile Actions */}
                 <div className="px-4 pt-4 border-t border-tealBlue/20 space-y-3">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    onClick={toggleDarkMode}
-                    className="w-full flex items-center justify-center p-3 rounded-lg bg-midnight/50 border border-tealBlue/20 text-sandBeige hover:text-warmGold transition-all duration-200"
-                  >
-                    {isDarkMode ? (
-                      <>
-                        <Sun size={20} className="mr-2" />
-                        Light Mode
-                      </>
-                    ) : (
-                      <>
-                        <Moon size={20} className="mr-2" />
-                        Dark Mode
-                      </>
-                    )}
-                  </motion.button>
-                  
                   <motion.a
                     whileHover={{ scale: 1.02 }}
                     href="tel:+12092674701"

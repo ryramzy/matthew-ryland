@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url)
     const title = searchParams.get('title') || 'Matthew Ryland'
-    const description = searchParams.get('description') || 'Personal Injury Attorney'
+    const description = searchParams.get('description') || 'Builder, Strategist, and Advocate'
 
     return new ImageResponse(
       (
