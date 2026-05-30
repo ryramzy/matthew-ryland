@@ -1,18 +1,17 @@
-# Matthew Ryland Law Firm Website
+# Matthew Ramsay | Global Systems Strategist
 
-A modern, performant website built with Next.js 14, TypeScript, and Tailwind CSS.
+A modern, performant digital portfolio and content platform reflecting a philosophy of clarity, execution, and integration. Operating at the intersection of infrastructure, education, and platform design.
 
-## Features
+## Architecture & Infrastructure
 
-- Next.js 14 with App Router
-- TypeScript for type safety
-- Tailwind CSS for styling
-- MDX for content
-- Optimized images and fonts
-- SEO-friendly
-- Performance optimized
-- Security headers
-- Analytics and Speed Insights
+Built on the foundation of the "Street Luxury" design system, prioritizing depth, high contrast, and structural precision over visual noise.
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS (Custom Monochromatic System)
+- **Content**: MDX (Markdown + React Components)
+- **Deployment**: Vercel
+- **Automation**: Vercel Cron + LLM API + GitHub API for autonomous content generation.
 
 ## Getting Started
 
@@ -21,44 +20,29 @@ A modern, performant website built with Next.js 14, TypeScript, and Tailwind CSS
    ```bash
    npm install
    ```
-3. Run the development server:
+3. Setup environment variables (create a `.env.local` file):
+   ```bash
+   # Required for Automated Weekly Blog
+   GITHUB_PAT="your_github_personal_access_token"
+   LLM_API_KEY="your_ai_api_key_here"
+   ```
+4. Run the development server:
    ```bash
    npm run dev
    ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Scripts
+## Design System
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run analyze` - Analyze bundle size
+The platform utilizes a customized, high-contrast palette:
+- `streetBlack`: The void. Foundation color.
+- `surface`: Elevated layers for structure.
+- `card`: Interactive element background.
+- `border`: Subtle delineations.
+- `silver` & `crispWhite`: High-contrast typography.
 
-## Deployment
+## Automated Blog Architecture
 
-The site is deployed on Vercel. Push to the main branch to trigger a deployment.
-
-## Performance
-
-- Lighthouse score: 100/100
-- Core Web Vitals: Good
-- First Contentful Paint: < 1s
-- Time to Interactive: < 2s
-
-## Security
-
-- HTTPS enforced
-- Security headers configured
-- Content Security Policy
-- XSS protection
-- CSRF protection
-
-## Contributing
-
-1. Create a new branch
-2. Make your changes
-3. Submit a pull request
+This repository features an autonomous blogging engine. A Vercel Cron Job fires weekly, triggering an API route that queries an LLM with a permanent system prompt of Matthew's core philosophies. The LLM generates a markdown post in his exact voice, and the API pushes the file directly to this GitHub repository, triggering an automatic Vercel deployment.
 
 ## License
 

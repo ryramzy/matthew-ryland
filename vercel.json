@@ -17,5 +17,11 @@
       "src": "/sitemap.xml",
       "dest": "/sitemap.xml"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/generate-post",
+      "schedule": "0 8 * * 1"
+    }
   ]
 } 

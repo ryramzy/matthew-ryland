@@ -69,6 +69,7 @@ export default function Footer() {
             © {currentYear} Matthew Ramsay. All rights reserved.
           </div>
           <div className="flex space-x-6">
+            <Link href="/philosophy" className="hover:text-crispWhite transition-colors">Philosophy</Link>
             <Link href="/privacy" className="hover:text-crispWhite transition-colors">Privacy</Link>
             <Link href="/terms" className="hover:text-crispWhite transition-colors">Terms</Link>
           </div>

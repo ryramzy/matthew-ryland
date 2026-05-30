@@ -19,7 +19,8 @@ export function Header() {
 
   const navItems = [
     { href: '/', label: 'HOME' },
-    { href: '#work', label: 'WORK' },
+    { href: '/#work', label: 'WORK' },
+    { href: '/philosophy', label: 'PHILOSOPHY' },
     { href: '/contact', label: 'CONTACT' },
   ]
 
