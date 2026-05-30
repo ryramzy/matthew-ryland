@@ -1,19 +1,25 @@
 # Repository Notes: Architecture & Philosophy
 
 ## The Ethos
-This repository is not just a digital resume; it is an operational manifestation of Matthew Ramsay's core philosophies:
-- **Clarity over complexity**
-- **Execution over theory**
-- **Systems that adapt, not systems that assume**
+This repository is an operational manifestation of Matthew Ramsay's core philosophies—synthesizing raw journal entries and reflections from the 2026 Rio Residency.
+
+**Core Directives:**
+- **Clarity over complexity**: Reducing noise and focusing on essential execution.
+- **Structural Design over Reactive Friction**: Building autonomous systems rather than reacting to external chaos.
+- **Leverage without dependency**: Designing income and work structures that prioritize personal sovereignty.
+- **Integration of Ancient and Modern**: Utilizing cutting-edge technology (Agentic AI, MCP) to achieve ancient states of alignment (Wu Wei).
+
+## The Architect Shift
+This repository represents the transition from "operator to systems architect in practice." It is the technical embodiment of a life path moving from seeking external access to building independent foundations. Relying on external social or environmental access creates "learned helplessness." This codebase is designed to be the exact opposite: a self-owned, self-directed asset.
 
 ## Core Architecture
-The stack is designed for **leverage without dependency**:
+The stack is designed to reflect Libertarian principles of self-ownership and nondualism's clarity of perception:
 - **Next.js 14 App Router**: Provides modern React primitives while allowing for server-side execution and API integration.
 - **Tailwind CSS**: Heavily customized to the `Street Luxury` aesthetic. We avoid utility bloat by defining strict, semantic color variables (`streetBlack`, `crispWhite`, `silver`, `surface`).
 - **Markdown / MDX**: Content is King. Instead of relying on a bloated CMS, all blog posts and content are stored as raw markdown, ensuring data ownership and simple portability.
 
-## The Automated Blogging Engine
-The most complex mechanism in this repository is the autonomous blogging engine designed to reflect the transition from "operator to systems architect in practice."
+## The Autonomous Blogging Engine
+The most complex mechanism in this repository is the autonomous blogging engine, designed to reflect the quiet shift to Agentic AI and structural autonomy.
 
 ### The Flow
 1. **Trigger**: Vercel Cron hits `/api/generate-post` every Monday.
@@ -26,5 +32,6 @@ The most complex mechanism in this repository is the autonomous blogging engine 
 5. **Deployment**: Vercel detects the new commit and rebuilds the site. Zero manual steps.
 
 ## Future Roadmap
-- Expanding the AI agentic capabilities to handle email processing and automated client intake.
-- Replacing static content with localized database queries for true scalability across LATAM markets.
+- Expanding Agentic AI capabilities (MCP integration) to handle email processing and automated client intake.
+- Replacing static content with localized database queries for true scalability across LATAM markets (English/Portuguese integration).
+- Deepening the structural autonomy of the platform to serve as a hub for both technical execution and philosophical education.
