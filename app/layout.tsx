@@ -1,49 +1,75 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Playfair_Display, DM_Sans, DM_Mono } from 'next/font/google'
 import { SocialBar } from './components/social-bar'
 import { PreloadResources } from './components/preload-resources'
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import { Header } from './components/header'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
 
-const inter = Inter({ 
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-playfair'
 })
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-dm-sans'
+})
+
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-dm-mono'
+})
+
+export const viewport: Viewport = {
+  themeColor: '#0A0A0A',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
 
 export const metadata: Metadata = {
   title: {
-    default: 'Matthew Ryland - Builder, Strategist, Advocate',
-    template: '%s | Matthew Ryland'
+    default: 'Matthew Ramsay - Global Systems Strategist | Cloud Architect',
+    template: '%s | Matthew Ramsay'
   },
-  description: 'Builder, Strategist, and Advocate bridging gaps between communities, information, and opportunities through storytelling, innovation, and public service.',
-  keywords: ['Matthew Ryland', 'Technology', 'Innovation', 'Public Service', 'Accessibility', 'Journalism', 'Policy'],
-  authors: [{ name: 'Matthew Ryland' }],
-  creator: 'Matthew Ryland',
-  publisher: 'Matthew Ryland',
+  description: 'Engineering at the intersection of cloud infrastructure, agentic AI, and global systems design. Building the future from first principles.',
+  keywords: ['Matthew Ramsay', 'Cloud Architect', 'Global Systems Strategist', 'CTO', 'Agentic AI', 'Infrastructure'],
+  authors: [{ name: 'Matthew Ramsay' }],
+  creator: 'Matthew Ramsay',
+  publisher: 'Matthew Ramsay',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Matthew Ramsay',
+  },
   formatDetection: {
     email: false,
     address: false,
   },
-  metadataBase: new URL('https://matthewryland.com'),
+  metadataBase: new URL('https://matthew-ryland.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://matthewryland.com',
-    siteName: 'Matthew Ryland',
-    title: 'Matthew Ryland - Builder, Strategist, Advocate',
-    description: 'Builder, Strategist, and Advocate bridging gaps between communities, information, and opportunities.',
+    url: 'https://matthew-ryland.vercel.app',
+    siteName: 'Matthew Ramsay',
+    title: 'Matthew Ramsay - Global Systems Strategist | Cloud Architect',
+    description: 'Engineering at the intersection of cloud infrastructure, agentic AI, and global systems design.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Matthew Ryland - Builder, Strategist, Advocate',
-    description: 'Builder, Strategist, and Advocate bridging gaps between communities, information, and opportunities.',
+    title: 'Matthew Ramsay - Global Systems Strategist | Cloud Architect',
+    description: 'Engineering at the intersection of cloud infrastructure, agentic AI, and global systems design.',
     creator: '@ryramzyx',
   },
   robots: {
@@ -57,9 +83,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-site-verification',
-  },
 }
 
 export default function RootLayout({
@@ -71,9 +94,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <PreloadResources />
+        <link rel="apple-touch-icon" href="/icon.png" />
       </head>
-      <body className={`${inter.className} bg-midnight text-sandBeige min-h-screen flex flex-col`}>
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+      <body className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} bg-streetBlack text-silver min-h-screen flex flex-col antialiased`}>
+        <main className="flex-auto min-w-0 flex flex-col px-4 md:px-0">
           <Header />
           {children}
           <Footer />

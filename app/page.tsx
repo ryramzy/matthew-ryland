@@ -1,15 +1,13 @@
 import { Hero } from './components/hero'
-import { Projects } from './components/projects'
-import { Approach } from './components/approach'
-import { Contact } from './components/contact'
+import { CoreStack } from './components/core-stack'
+import { Projects as Experience } from './components/projects'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-midnight text-white">
+    <div className="bg-streetBlack w-full">
       <Hero />
-      <Projects />
-      <Approach />
-      <Contact />
-    </main>
+      <CoreStack />
+      <Experience />
+    </div>
   )
 }
