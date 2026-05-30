@@ -29,7 +29,7 @@ export async function GET(request: Request) {
     const authHeader = request.headers.get('authorization')
     if (
       process.env.CRON_SECRET && 
-      authHeader !== \`Bearer \${process.env.CRON_SECRET}\`
+      authHeader !== `Bearer ${process.env.CRON_SECRET}`
     ) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -62,7 +62,7 @@ export async function GET(request: Request) {
         messages: [
           {
             role: 'user',
-            content: \`Today's date is \${new Date().toISOString().split('T')[0]}. Write this week's blog post focusing on the theme: "\${currentTheme}".\`
+            content: `Today's date is ${new Date().toISOString().split('T')[0]}. Write this week's blog post focusing on the theme: "${currentTheme}".`
           }
         ]
       })
@@ -70,14 +70,14 @@ export async function GET(request: Request) {
 
     if (!claudeResponse.ok) {
       const errorText = await claudeResponse.text()
-      throw new Error(\`Claude API Error: \${errorText}\`)
+      throw new Error(`Claude API Error: ${errorText}`)
     }
 
     const claudeData = await claudeResponse.json()
     const generatedMarkdown = claudeData.content[0].text.trim()
 
     // 3. Extract slug from generated frontmatter (fallback to timestamp)
-    let slug = \`automated-post-\${Date.now()}\`
+    let slug = `automated-post-${Date.now()}`
     const titleMatch = generatedMarkdown.match(/title:\s*"?([^"\n]+)"?/)
     if (titleMatch && titleMatch[1]) {
       slug = titleMatch[1]
@@ -86,19 +86,19 @@ export async function GET(request: Request) {
         .replace(/(^-|-$)+/g, '')
     }
 
-    const fileName = \`\${slug}.mdx\`
+    const fileName = `${slug}.mdx`
     const repo = process.env.GITHUB_REPO || 'ryramzy/matthew-ryland'
 
     // 4. Push to GitHub using GitHub API
-    const githubResponse = await fetch(\`https://api.github.com/repos/\${repo}/contents/content/blog/\${fileName}\`, {
+    const githubResponse = await fetch(`https://api.github.com/repos/${repo}/contents/content/blog/${fileName}`, {
       method: 'PUT',
       headers: {
-        'Authorization': \`Bearer \${process.env.GITHUB_PAT}\`,
+        'Authorization': `Bearer ${process.env.GITHUB_PAT}`,
         'Content-Type': 'application/json',
         'Accept': 'application/vnd.github.v3+json'
       },
       body: JSON.stringify({
-        message: \`Auto-publish weekly blog: \${slug}\`,
+        message: `Auto-publish weekly blog: ${slug}`,
         content: Buffer.from(generatedMarkdown).toString('base64'),
         branch: 'main'
       })
@@ -106,12 +106,12 @@ export async function GET(request: Request) {
 
     if (!githubResponse.ok) {
       const errorText = await githubResponse.text()
-      throw new Error(\`GitHub API Error: \${errorText}\`)
+      throw new Error(`GitHub API Error: ${errorText}`)
     }
 
     return NextResponse.json({ 
       success: true, 
-      message: \`Post \${fileName} generated and pushed successfully.\`
+      message: `Post ${fileName} generated and pushed successfully.`
     })
 
   } catch (error: any) {
