@@ -50,6 +50,45 @@ export default function Philosophy() {
             </div>
           </section>
 
+          {/* Built Across Systems Section */}
+          <section className="mb-20">
+            <h2 className="text-sm font-mono tracking-[0.2em] uppercase text-silver/60 mb-6">Built Across Systems, Not Just Studied</h2>
+            <div className="space-y-6">
+              <p className="text-lg italic text-crispWhite/70">
+                My perspective isn’t theoretical.
+              </p>
+              <p>
+                I’ve traveled to 13 countries and lived in three—across the United States and Brazil in particular. That exposure shaped how I understand systems: not as static structures, but as environments that behave differently depending on culture, incentives, and constraints.
+              </p>
+              
+              <div className="py-6 my-8 border-y border-border">
+                <p className="font-mono text-sm tracking-widest text-silver/80 uppercase mb-4">I’ve worked across:</p>
+                <ul className="list-none space-y-3">
+                  <li className="flex items-start"><span className="w-2 h-2 bg-silver mt-2 mr-4 flex-shrink-0" /> Federal-level environments and institutional frameworks</li>
+                  <li className="flex items-start"><span className="w-2 h-2 bg-silver mt-2 mr-4 flex-shrink-0" /> Hyperlocal realities—where policy meets lived experience</li>
+                  <li className="flex items-start"><span className="w-2 h-2 bg-silver mt-2 mr-4 flex-shrink-0" /> Cross-cultural contexts where the same system produces completely different outcomes</li>
+                </ul>
+              </div>
+
+              <p className="font-bold text-crispWhite">That contrast matters.</p>
+              <p>
+                Because what looks efficient at a high level often breaks at the ground level. And what works locally doesn’t always scale without distortion.
+              </p>
+              
+              <div className="bg-surface/20 p-6 border-l-4 border-silver mt-8">
+                <p className="font-mono text-sm uppercase tracking-widest text-silver/80 mb-4">This is where my philosophy comes from:</p>
+                <ul className="space-y-2 mb-6">
+                  <li>Seeing how systems actually function under pressure</li>
+                  <li>Understanding the gap between design and reality</li>
+                  <li>Learning to build and think in a way that accounts for both</li>
+                </ul>
+                <p className="text-crispWhite italic">
+                  Nonduality, sovereignty, and system awareness didn’t come from theory. They came from navigating environments where those distinctions became unavoidable.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* What I Do Section */}
           <section className="mb-20">
             <h2 className="text-sm font-mono tracking-[0.2em] uppercase text-silver/60 mb-8">What I Do</h2>
