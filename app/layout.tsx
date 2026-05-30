@@ -44,7 +44,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'Matthew Ramsay' }],
   creator: 'Matthew Ramsay',
   publisher: 'Matthew Ramsay',
-  manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
