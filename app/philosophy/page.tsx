@@ -31,9 +31,9 @@ export default function Philosophy() {
             Operating at the intersection of infrastructure, education, and platform design, I build scalable frameworks grounded in real-world constraints.
           </p>
 
-          {/* About Section */}
+          {/* Integration of Identity */}
           <section className="mb-20">
-            <h2 className="text-sm font-mono tracking-[0.2em] uppercase text-silver/60 mb-6">About</h2>
+            <h2 className="text-sm font-mono tracking-[0.2em] uppercase text-silver/60 mb-6">The Architect Shift</h2>
             <div className="space-y-6">
               <p>
                 My work sits at the convergence of technical systems, operational strategy, and global environments.
@@ -42,7 +42,7 @@ export default function Philosophy() {
                 I didn’t start as an engineer. My background spans public service, education, and international work across the United States and Brazil. That exposure created a different lens: I don’t approach systems as isolated technical problems—I approach them as structures that must function under human, institutional, and cultural pressure.
               </p>
               <p>
-                Over the past year, I’ve entered a focused build phase—transitioning from operator to systems architect in practice. This has meant developing my own infrastructure, designing repeatable education systems, and contributing to platform-level projects that require coordination across multiple layers of technology and governance.
+                This transition represents the loss of a simple narrative and the acquisition of a complex task: turning personal separation into wisdom and compassion. The realization emerged that leadership is not born from certainty but from the integrity maintained while walking through ambiguity. Identity is an integration of multiple histories rather than the rejection of one for another. I am no longer searching for identity; I am honoring the full arc of the seeker, the witness, and the builder.
               </p>
               <p className="text-crispWhite font-medium text-lg mt-8 p-6 border-l-4 border-silver bg-surface/30">
                 The goal is simple: Build systems that work in the real world—and scale without breaking.
@@ -76,16 +76,6 @@ export default function Philosophy() {
               </div>
 
               <div>
-                <h3 className="text-xl font-serif font-bold text-crispWhite mb-4">Platform & Product Development</h3>
-                <p className="mb-4">I contribute to and build early-stage platforms with an emphasis on architecture, not just features.</p>
-                <ul className="list-disc list-inside space-y-2 text-sm md:text-base opacity-80">
-                  <li>Media and content infrastructure (VOD systems)</li>
-                  <li>Platform coordination across technical and institutional layers</li>
-                  <li>Independent rapid prototyping and application builds</li>
-                </ul>
-              </div>
-
-              <div>
                 <h3 className="text-xl font-serif font-bold text-crispWhite mb-4">Global Systems Perspective</h3>
                 <p className="mb-4">Working across U.S. and Brazilian contexts has shaped how I think about systems: they must adapt to their environment.</p>
                 <ul className="list-disc list-inside space-y-2 text-sm md:text-base opacity-80">
@@ -94,24 +84,6 @@ export default function Philosophy() {
                   <li>Multilingual execution (English / Portuguese)</li>
                 </ul>
               </div>
-            </div>
-          </section>
-
-          {/* Current Focus & Philosophy */}
-          <section className="mb-24">
-            <h2 className="text-sm font-mono tracking-[0.2em] uppercase text-silver/60 mb-6">Current Focus & Philosophy</h2>
-            <div className="space-y-6">
-              <p>
-                This is a build-first phase—prioritizing execution, iteration, and ownership over visibility. I am deepening technical execution in cloud and backend systems, structuring education into scalable products, and exploring platform opportunities in Brazil and LATAM.
-              </p>
-              <p>
-                Most systems fail not because of poor ideas, but because they aren’t designed for reality.
-              </p>
-              <ul className="list-none space-y-3 font-mono text-sm text-crispWhite bg-surface/20 p-6 border border-border mt-6">
-                <li className="flex items-center"><span className="w-2 h-2 bg-silver mr-4" /> Clarity over complexity</li>
-                <li className="flex items-center"><span className="w-2 h-2 bg-silver mr-4" /> Execution over theory</li>
-                <li className="flex items-center"><span className="w-2 h-2 bg-silver mr-4" /> Systems that adapt, not systems that assume</li>
-              </ul>
             </div>
           </section>
 
@@ -127,11 +99,17 @@ export default function Philosophy() {
               </p>
               
               <p>
-                Through fractured environments, shifting relationships, institutional constraints, and the constant need to adapt across cultures and expectations, I started to see a pattern: most breakdowns—personal or structural—come from misalignment. Between what is real and what is enforced. Between autonomy and control. Between the individual and the system they’re inside.
+                Through fractured environments, shifting relationships, institutional constraints, and the constant need to adapt across cultures, I started to see a pattern: most breakdowns—personal or structural—come from misalignment. Between what is real and what is enforced. Between autonomy and control. Between the individual and the system they’re inside.
               </p>
               
+              <h3 className="text-xl font-serif font-bold text-crispWhite mt-8">The Fragility of Access & Self-Built Foundations</h3>
               <p>
-                My work today is an extension of that realization. Over the past year, my focus hasn’t just been technical—it’s been structural at a personal level. I’ve had to confront attachment and control in relationships, the weight of external expectations versus internal clarity, and the reality of operating inside systems that don’t always reflect your values.
+                A profound realization surfaced regarding the "access" I thought I possessed; for years, I had experienced social worlds through others rather than building my own entry points. Relying on another for social or environmental access creates a "learned helplessness" that becomes visible only when the link is severed. When external chaos struck, the lack of my own foundation became a liability. This was a direct test of discipline over intelligence. Fixating on wealth—not just as money, but as clarity and peace—became the primary defensive and offensive maneuver.
+              </p>
+
+              <h3 className="text-xl font-serif font-bold text-crispWhite mt-8">Structural Design over Reactive Friction</h3>
+              <p>
+                A definitive shift has occurred, moving away from the friction of chasing opportunities and toward the precision of design. The daily architecture is now an anchor: physical discipline is the baseline for psychological sovereignty. I have transitioned from merely living to building an asset. This is the reclamation of autonomy; I am no longer a guest in someone else’s life. Every intentional block of time is a step toward becoming a man who does not rely on being "chosen," but who rises because he has built a foundation that doesn't let go.
               </p>
 
               <div className="bg-streetBlack border-l-2 border-silver pl-6 my-10">
@@ -142,10 +120,6 @@ export default function Philosophy() {
                   <li>From fragmentation → to integration</li>
                 </ul>
               </div>
-
-              <p>
-                This is where nondualism became practical, not abstract. Not as philosophy for its own sake, but as a way to see clearly: There is no clean separation between internal state and external system. The way you build, the way you relate, and the way you move through the world all come from the same underlying structure.
-              </p>
             </div>
           </section>
 
@@ -155,8 +129,8 @@ export default function Philosophy() {
             
             <div className="space-y-12">
               <div>
-                <h3 className="text-xl font-serif font-bold text-crispWhite mb-4">Nondualism → Clarity of Perception</h3>
-                <p>I don’t approach problems as "me vs. the world" anymore. Instead, I look at what is actually happening beneath the surface, where resistance is being created unnecessarily, and how perception shapes action. This reduces noise. It allows for cleaner decisions—whether in systems design, relationships, or strategy.</p>
+                <h3 className="text-xl font-serif font-bold text-crispWhite mb-4">Integration of Ancient and Modern</h3>
+                <p>There is a persistent synthesis of esoteric traditions (Taoism, Sufism) with cutting-edge technology (Agentic AI, MCP). The goal is to use modern tools to achieve ancient states of alignment and Wu Wei. There is no clean separation between internal state and external system. The way you build, the way you relate, and the way you move through the world all come from the same underlying structure.</p>
               </div>
 
               <div>
@@ -206,3 +180,4 @@ export default function Philosophy() {
     </div>
   )
 }
+
