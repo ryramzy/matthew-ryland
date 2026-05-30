@@ -42,9 +42,11 @@ export function Header() {
             className="flex items-center"
           >
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-silver to-white rounded flex items-center justify-center shadow-lg">
-                <span className="text-streetBlack font-bold font-serif text-xl tracking-tighter">MR</span>
-              </div>
+              <img 
+                src="/icon.png" 
+                alt="MR Logo" 
+                className="w-10 h-10 rounded shadow-lg object-cover"
+              />
               <span className="text-xl font-serif font-bold text-crispWhite tracking-tight">
                 Matthew Ramsay
               </span>
