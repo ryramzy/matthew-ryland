@@ -21,15 +21,13 @@ The stack is designed to reflect Libertarian principles of self-ownership and no
 ## The Autonomous Blogging Engine
 The most complex mechanism in this repository is the autonomous blogging engine, designed to reflect the quiet shift to Agentic AI and structural autonomy.
 
-### The Flow
+### The Flow (STORM-Inspired)
 1. **Trigger**: Vercel Cron hits `/api/generate-post` every Monday.
-2. **Context Injection**: The API loads the permanent "Philosophy Document" (Matthew's worldview, voice, and system constraints).
-3. **LLM Generation**: Claude/OpenAI generates a 800-word post based on rotating thematic seeds:
-   - *Week A*: Lessons from current client work & project decisions
-   - *Week B*: Philosophy deep dive (systems, sovereignty, wholeness)
-   - *Week C*: Professional journey (origin, pivot, architect shift)
-4. **Autonomous Commit**: The API wraps the generated text in MDX frontmatter and uses the GitHub API to commit the file directly to `/content/blog/`.
-5. **Deployment**: Vercel detects the new commit and rebuilds the site. Zero manual steps.
+2. **Context Injection**: The API autonomously fetches the raw text of `REPO_NOTES.md` and the 3 most recent repository commit messages from the GitHub API. This ensures the engine is grounded in what was actually built that week, not just theory.
+3. **Research Phase (Step 1)**: Claude (`claude-3-haiku`) acts as an AI research engine, analyzing the injected context and the week's theme to generate a structured outline and identify 3 profound architectural/philosophical questions to address.
+4. **Drafting Phase (Step 2)**: Claude generates the final 800-word MDX post based on the research outline, weaving the recent commit context into the thematic reflection.
+5. **Autonomous Commit**: The API uses the GitHub API to commit the file directly to `/content/blog/`.
+6. **Deployment**: Vercel detects the new commit and rebuilds the site. Zero manual steps.
 
 ## VIP Client Portal & Cybersecurity
 To maintain a high-end, exclusive experience, the application implements a strict security posture:
