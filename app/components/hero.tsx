@@ -24,7 +24,7 @@ export function Hero() {
           {/* Top label */}
           <div className="flex items-center space-x-4 mb-8">
             <span className="text-xs tracking-widest text-silver uppercase font-mono">
-              PORTFOLIO • 2025
+              PORTFOLIO • 2026
             </span>
           </div>
 
