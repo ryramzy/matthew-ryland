@@ -38,6 +38,8 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Missing API Keys' }, { status: 500 })
     }
 
+    const repo = process.env.GITHUB_REPO || 'ryramzy/matthew-ryland'
+
     // Determine Theme based on week of the year
     const weekNum = getWeekNumber(new Date())
     const themes = [
@@ -47,36 +49,86 @@ export async function GET(request: Request) {
     ]
     const currentTheme = themes[weekNum % 3]
 
-    // 2. Call Claude API to generate post
-    const claudeResponse = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-3-haiku-20240307',
-        max_tokens: 2000,
-        system: SYSTEM_PROMPT,
-        messages: [
-          {
-            role: 'user',
-            content: `Today's date is ${new Date().toISOString().split('T')[0]}. Write this week's blog post focusing on the theme: "${currentTheme}".`
-          }
-        ]
-      })
-    })
+    // 2. Context Injection: Fetch REPO_NOTES.md and latest commits from GitHub API
+    let repoNotesContext = "";
+    let commitsContext = "";
 
-    if (!claudeResponse.ok) {
-      const errorText = await claudeResponse.text()
-      throw new Error(`Claude API Error: ${errorText}`)
+    try {
+      const notesRes = await fetch(`https://api.github.com/repos/${repo}/contents/REPO_NOTES.md`, {
+        headers: { 'Authorization': `Bearer ${process.env.GITHUB_PAT}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (notesRes.ok) {
+        const notesData = await notesRes.json();
+        repoNotesContext = Buffer.from(notesData.content, 'base64').toString('utf8');
+      }
+
+      const commitsRes = await fetch(`https://api.github.com/repos/${repo}/commits?per_page=3`, {
+        headers: { 'Authorization': `Bearer ${process.env.GITHUB_PAT}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (commitsRes.ok) {
+        const commitsData = await commitsRes.json();
+        commitsContext = commitsData.map((c: any) => `- ${c.commit.message}`).join('\n');
+      }
+    } catch (e) {
+      console.warn("Could not fetch full context from GitHub:", e);
     }
 
-    const claudeData = await claudeResponse.json()
-    const generatedMarkdown = claudeData.content[0].text.trim()
+    const callClaude = async (messages: any[], system: string = '') => {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': process.env.ANTHROPIC_API_KEY as string,
+          'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify({
+          model: 'claude-3-haiku-20240307',
+          max_tokens: 2000,
+          system,
+          messages
+        })
+      });
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(`Claude API Error: ${err}`);
+      }
+      const data = await res.json();
+      return data.content[0].text.trim();
+    };
 
-    // 3. Extract slug from generated frontmatter (fallback to timestamp)
+    // 3. Step 1: STORM-Inspired Research & Outline Generation
+    const researchPrompt = `
+You are an AI research engine for Matthew Ramsay.
+Analyze the following context regarding his recent architectural work and core philosophy:
+
+REPO_NOTES.md:
+${repoNotesContext || "(No repo notes available)"}
+
+Recent Commits:
+${commitsContext || "(No recent commits)"}
+
+Theme for this week: "${currentTheme}"
+
+Task: Generate a highly structured outline and 3 specific, profound architectural/philosophical questions to address in this week's blog post. 
+Output ONLY the outline and the questions. Keep it concise.
+    `.trim();
+
+    const outlineOutput = await callClaude([{ role: 'user', content: researchPrompt }]);
+
+    // 4. Step 2: Final Draft Generation
+    const draftingPrompt = `
+Today's date is ${new Date().toISOString().split('T')[0]}. 
+Write this week's blog post focusing on the theme: "${currentTheme}".
+
+Use the following research outline and questions to structure and inspire your post. Ensure the recent commit context and philosophy from the outline are woven naturally into the reflection.
+
+Outline & Questions:
+${outlineOutput}
+    `.trim();
+
+    const generatedMarkdown = await callClaude([{ role: 'user', content: draftingPrompt }], SYSTEM_PROMPT);
+
+    // 5. Extract slug from generated frontmatter (fallback to timestamp)
     let slug = `automated-post-${Date.now()}`
     const titleMatch = generatedMarkdown.match(/title:\s*"?([^"\n]+)"?/)
     if (titleMatch && titleMatch[1]) {
@@ -87,9 +139,8 @@ export async function GET(request: Request) {
     }
 
     const fileName = `${slug}.mdx`
-    const repo = process.env.GITHUB_REPO || 'ryramzy/matthew-ryland'
 
-    // 4. Push to GitHub using GitHub API
+    // 6. Push to GitHub using GitHub API
     const githubResponse = await fetch(`https://api.github.com/repos/${repo}/contents/content/blog/${fileName}`, {
       method: 'PUT',
       headers: {
