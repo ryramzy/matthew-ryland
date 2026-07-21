@@ -1,6 +1,5 @@
 import './globals.css'
 import { Playfair_Display, DM_Sans, DM_Mono } from 'next/font/google'
-import { SocialBar } from './components/social-bar'
 import { PreloadResources } from './components/preload-resources'
 import { Metadata, Viewport } from 'next'
 import { Header } from './components/header'
@@ -103,7 +102,6 @@ export default function RootLayout({
           <Analytics />
           <SpeedInsights />
         </main>
-        <SocialBar />
       </body>
     </html>
   )

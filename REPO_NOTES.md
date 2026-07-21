@@ -31,6 +31,11 @@ The most complex mechanism in this repository is the autonomous blogging engine,
 4. **Autonomous Commit**: The API wraps the generated text in MDX frontmatter and uses the GitHub API to commit the file directly to `/content/blog/`.
 5. **Deployment**: Vercel detects the new commit and rebuilds the site. Zero manual steps.
 
+## VIP Client Portal & Cybersecurity
+To maintain a high-end, exclusive experience, the application implements a strict security posture:
+- **Zero-Dependency VIP Auth**: A highly secure `/portal` route protected by Server Actions, strict rate-limiting, and `Secure`/`HttpOnly` cookies. High-value clients access direct booking links via a per-client JSON PIN mapping, allowing instant revocation without burning global access.
+- **Content Security Policy (CSP)**: Strict origin enumeration prevents XSS, framing attacks, and unauthorized data injection, explicitly allowing only known embeds (Calendly, Unsplash, Vercel).
+
 ## Future Roadmap
 - Expanding Agentic AI capabilities (MCP integration) to handle email processing and automated client intake.
 - Replacing static content with localized database queries for true scalability across LATAM markets (English/Portuguese integration).
